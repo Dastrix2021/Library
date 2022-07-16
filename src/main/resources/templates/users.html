@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+  <head>
+      <title>Users</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <header th:insert="blocks/header :: header"></header>
+    <script>
+        var button1 = document.getElementById("headerButtonBook")
+        var button2 = document.getElementById("headerButtonMain")
+        var button3 = document.getElementById("headerButtonUser")
+        button1.setAttribute("class", "nav-link px-2 text-white")
+        button2.setAttribute("class", "nav-link px-2 text-white")
+        button3.setAttribute("class", "nav-link px-2 text-secondary")
+    </script>
+    <h1 class="text-center" >Користувачі та книги</h1>
+
+    <ul th:each="us : ${users}">
+        <li class="w-25 p-3 mt-5 mb-2 bg-primary text-white" th:text="${us.username}"></li>
+        <ul th:each="bs : ${books}" th:if="${us.id} == ${bs.reader.id}">
+            <li class="w-25 p-2 mb-2 bg-secondary text-white" th:text="${bs.bookName}"></li>
+        </ul>
+    </ul>
+
+  </body>
+</html>

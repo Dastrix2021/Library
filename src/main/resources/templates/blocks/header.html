@@ -1,0 +1,26 @@
+<header xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.w3.org/1999/xhtml"
+        th:fragment="header" class="p-3 bg-dark text-white">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+            <h5 class="my-0 mr-md-auto font-weight-normal">Dastrix</h5>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 text-secondary" id="headerButtonMain">Головна сторінка</a></li>
+                <li><a href="/books" class="nav-link px-2 text-white" id="headerButtonBook" >Мої книжки</a></li>
+                <li><a href="/users" class="nav-link px-2 text-white" id="headerButtonUser" >Користувачі</a></li>
+            </ul>
+
+            <div sec:authorize="!isFullyAuthenticated()">
+                <a href="/reg" class="btn btn-success mr-2">Регістрація</a>
+                <a href="/login" class="btn btn-warning">Увійти</a>
+            </div>
+            <div sec:authorize="isFullyAuthenticated()">
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" class="btn btn-danger" value="Вийти"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>

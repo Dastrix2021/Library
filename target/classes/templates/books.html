@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+    <script>
+        var button1 = document.getElementById("headerButtonBook")
+        var button2 = document.getElementById("headerButtonMain")
+        button1.setAttribute("class", "nav-link px-2 text-secondary")
+        button2.setAttribute("class", "nav-link px-2 text-white")
+    </script>
+
+    <div class="container mt-5">
+        <h1 class="mt-5 text-center" th:text="'Вітаю: ' + ${userName}" />
+        <h2 class="mt-5" th:text="${book_name}" /><br>
+
+        <div th:each="row : ${books}">
+            <div th:if="${row.reader.username} == ${userName}">
+                <h3 class="mt-2" th:text="${row.bookName}" />
+                <p th:text="${row.text}" />
+                <p><b>Читач: </b><span th:text="${row.reader.username}" /></p>
+                <form th:action="@{/books/} + ${row.id}" method="post">
+                    <button type="submit" class="btn btn-warning">Повернути книгу</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
