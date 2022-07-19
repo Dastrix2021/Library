@@ -12,9 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.*;
+import java.util.Collections;
 
 @Controller
 public class MainController {
@@ -67,7 +66,6 @@ public class MainController {
 
     @GetMapping("/users")
     public String users(Model model) throws ClassNotFoundException {
-
         Iterable<Book> books = bookRepository.findAll();
         Iterable<User> users = userRepository.findAll();
         model.addAttribute("readers", "Всі Читачі");

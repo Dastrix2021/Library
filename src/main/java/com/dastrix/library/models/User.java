@@ -14,14 +14,13 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    String username, password, email, userBooks;
+    String username, password, email;
     public boolean enabled;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
-
 
     public String getEmail() {
         return email;
@@ -57,14 +56,6 @@ public class User implements UserDetails {
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
-    }
-
-    public String getUserBooks() {
-        return userBooks;
-    }
-
-    public void setUserBooks(String userBooks) {
-        this.userBooks = userBooks;
     }
 
     public void setUsername(String username) {

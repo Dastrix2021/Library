@@ -16,19 +16,7 @@ public class Book {
     @JoinColumn(name = "user_id")
     private User reader;
 
-    public Book(){};
-
-    public Book(String bookName, String text, boolean free, User reader) {
-        this.bookName = bookName;
-        this.text = text;
-        this.free = free;
-        this.reader = reader;
-    }
-
-    public Book(User reader, String bookName){
-        this.reader = reader;
-        this.bookName = bookName;
-    }
+    public Book() {}
 
     public Book(User reader){
         this.reader = reader;

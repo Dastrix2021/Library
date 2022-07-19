@@ -3,9 +3,9 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
   <head>
       <title>Users</title>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-      <link rel="stylesheet" href="css/bootstrap.css">
-      <link rel="stylesheet" href="css/main.css">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <link rel="stylesheet" href="css/bootstrap.css"/>
+      <link rel="stylesheet" href="css/main.css"/>
   </head>
   <body>
     <header th:insert="blocks/header :: header"></header>
@@ -18,13 +18,11 @@
         button3.setAttribute("class", "nav-link px-2 text-secondary")
     </script>
     <h1 class="text-center" >Користувачі та книги</h1>
-
-    <ul th:each="us : ${users}">
-        <li class="w-25 p-3 mt-5 mb-2 bg-primary text-white" th:text="${us.username}"></li>
-        <ul th:each="bs : ${books}" th:if="${us.id} == ${bs.reader.id}">
-            <li class="w-25 p-2 mb-2 bg-secondary text-white" th:text="${bs.bookName}"></li>
+        <ul th:each="us : ${users}">
+            <li id="users-and" class="w-25 p-3 mt-5 mb-2 bg-primary text-white" th:text="${us.username}"></li>
+                <ul th:each="bs : ${books}" th:if="${us.id} == ${bs.reader.id}">
+                    <li id="and-books" class="w-25 p-2 mb-2 bg-secondary text-white" th:text="${bs.bookName}"></li>
+                </ul>
         </ul>
-    </ul>
-
   </body>
 </html>

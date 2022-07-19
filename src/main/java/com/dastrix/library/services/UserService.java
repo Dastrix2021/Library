@@ -17,4 +17,5 @@ import org.springframework.stereotype.Service;
         public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
             return userRepository.findByUsername(s);
     }
+
 }

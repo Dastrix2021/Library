@@ -3,27 +3,24 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>Main</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/main.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
-
     <div class="container mt-5">
-        <h1 class="mt-5 text-center" th:text="${book_name}" />
-        <h2 class="mt-2">Усі книги:</h2><br>
-
-            <div th:each="row : ${books}">
-                <div th:if="${row.free} == true">
-                    <h3 class="mt-2" th:text="${row.bookName}" />
-                    <p th:text="${row.text}" />
-                    <form th:action="@{/home/} + ${row.id}" method="post">
-                        <button type="submit" class="btn btn-success">Отримати книгу</button>
-                    </form>
-                </div>
+        <h1 class="mt-5 text-center" th:text="${book_name}"></h1>
+        <h2 class="mt-2">Усі книги:</h2><br/>
+        <div th:each="row : ${books}">
+            <div id="home-books" th:if="${row.free} == true">
+                <h3 class="mt-2" th:text="${row.bookName}"></h3>
+                <p th:text="${row.text}"></p>
+                <form th:action="@{/home/} + ${row.id}" method="post">
+                    <button type="submit" class="btn btn-success">Отримати книгу</button>
+                </form>
             </div>
-
+        </div>
     </div>
 </body>
 </html>
